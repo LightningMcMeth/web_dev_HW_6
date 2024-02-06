@@ -7,8 +7,8 @@ def getEntityById(request, id):
     productList = product.productList['productList']
     productItem = next((item for item in productList if item['id'] == id), None)
 
-    if productItem is None:
-        return HttpResponse("Product with specified id not found :(")
+    if productItem is None:     #yes these paths are hardcoded but whatever they're just a quick quality of life change
+        return HttpResponse("Product with specified id not found :( <a href='http://127.0.0.1:8000/hw_6/entities/'> view product list</a>")
 
     return render(request, 'displayEntities.html', {'products': [productItem]})
 
