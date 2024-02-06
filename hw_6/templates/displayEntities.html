@@ -1,0 +1,19 @@
+{% for product in products %}
+    <ul>
+        <li style="font-size: 26px;  color: darkblue;"><a href="{% url 'getEntityById' id=product.id %}">{{product.name}}</a></li>
+        <li>${{product.price}}</li>
+        <li>{{product.category}}</li>
+        <li>{{product.description}}</li>
+        <li>{{product.availability}}</li>
+        <li><a href="{% url 'listAllEntities' %}"> View all entities </a></li>
+    </ul>
+    <br>
+{% endfor %}
+
+<style>
+    li {
+        list-style: none;
+        font-size: 20px;
+        background-color: aquamarine;
+    }
+</style>
