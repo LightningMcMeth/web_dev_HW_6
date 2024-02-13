@@ -1,3 +1,4 @@
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 from django.shortcuts import render
 from hw_6.data import product
@@ -27,8 +28,31 @@ def deleteEntityById(request, id):
         return HttpResponse("Product not found :( <a href='http://127.0.0.1:8000/hw_6/entities/'> view product list</a>")
 
 
+@csrf_exempt
 def createEntity(request):
-    return HttpResponse('gamer')
+    if request.method == 'POST':
+
+        name = request.POST.get('name')
+        price = request.POST.get('price')
+        category = request.POST.get('category')
+        description = request.POST.get('description')
+        availability = request.POST.get('availability') == 'True'
+        productId = request.POST.get('id')
+
+        newProduct = {
+            'name': name,
+            'price': float(price),
+            'category': category,
+            'description': description,
+            'availability': availability,
+            'id': productId
+        }
+
+        product.productList['productList'].append(newProduct)
+
+        return render(request, 'displayEntities.html', {'products': [newProduct]})
+    else:
+        return HttpResponse("Something went wrong :( <a href='http://127.0.0.1:8000/hw_6/entities/'> view product list</a>")
 
 
 def listAllEntities(request):
