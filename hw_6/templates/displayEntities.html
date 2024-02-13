@@ -1,3 +1,4 @@
+{% load static %}
 {% for product in products %}
     <ul>
         <li style="font-size: 26px;  color: darkblue;"><a href="{% url 'getEntityById' id=product.id %}">{{product.name}}</a></li>
@@ -9,7 +10,7 @@
     </ul>
     <br>
 {% endfor %}
-
+<img src="{% static 'random_png.png' %}"/>
 <style>
     li {
         list-style: none;

@@ -4,6 +4,12 @@ from django.shortcuts import render
 from hw_6.data import product
 
 
+def mainPage(request):
+    return render(request, 'mainPage.html')
+
+def displayImage(request):
+    return render(request, )
+
 def getEntityById(request, id):
     productList = product.productList['productList']
     productItem = next((item for item in productList if item['id'] == id), None)
@@ -33,15 +39,20 @@ def createEntity(request):
     if request.method == 'POST':
 
         name = request.POST.get('name')
-        price = request.POST.get('price')
+        price = request.POST.get('price').replace(',', '.')
         category = request.POST.get('category')
         description = request.POST.get('description')
         availability = request.POST.get('availability') == 'True'
         productId = request.POST.get('id')
 
+        try:
+            price = float(price)
+        except ValueError:
+            return HttpResponse("Invalid price format :( <a href='http://127.0.0.1:8000/hw_6/entities/'> view product list</a>")
+
         newProduct = {
             'name': name,
-            'price': float(price),
+            'price': price,
             'category': category,
             'description': description,
             'availability': availability,

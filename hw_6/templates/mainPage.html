@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main page</title>
+</head>
+<body>
+    <h1>DOCUMENTATION</h1>
+    <h3>Main page</h3>
+    <p>http://127.0.0.1:8000/hw_6//<br>
+    This endpoint will retrieve the main page containing information about the endpoints</p>
+
+    <br>
+    <h3>View all entities endpoint</h3>
+    <p>http://127.0.0.1:8000/hw_6/entities/<br>
+    This endpoint displays a list of all the product entities</p>
+    <p><a href="{% url 'listAllEntities' %}">view all entities</a></p>
+
+    <br>
+    <h3>View specified entity endpoint</h3>
+    <p>example:  http://127.0.0.1:8000/hw_6/entities/abc123/<br>
+    This endpoint displays the specified product entity. All valid entity ids: abc123, def456, ghi789, jkl012</p>
+
+    <br>
+    <h3>Delete specified entity endpoint</h3>
+    <p>example: http://127.0.0.1:8000/hw_6/deleteEntity/abc123<br>
+    This endpoint deletes the specified product entity. All valid entity ids: abc123, def456, ghi789, jkl012</p>
+
+    <br>
+    <h3>Create entity endpoint</h3>
+    <p>http://127.0.0.1:8000/hw_6/createEntity/<br>
+    This endpoint allows the creation of a new product through postman</p>
+    <p>Example values: </p>
+            'name': 'RTX2060',
+            'price': 9.99,
+            'category': 'PC component',
+            'description': 'it works',
+            'availability': True,
+            'id': 'gamer123'
+</body>
+</html>
