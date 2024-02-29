@@ -7,6 +7,9 @@ from hw_6.data import product
 def mainPage(request):
     return render(request, 'mainPage.html')
 
+def wrongUrl(request):
+    return HttpResponse("Endpoint with specified URL not found :( <a href='http://127.0.0.1:8000/hw_6/entities/'> view product list</a>")
+
 def displayImage(request):
     return render(request, )
 
